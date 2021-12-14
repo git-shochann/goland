@@ -1,3 +1,3 @@
-## Notes
+## development notes 👋
 
-![Gopher🦝](https://www.ardanlabs.com/images/gopher-kart/gopher-blue-updated.gif)
+![Gopher🦝](https://blog.jetbrains.com/wp-content/uploads/2021/02/Go_8001611039611515.gif)
