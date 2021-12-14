@@ -1,8 +1,8 @@
-package main
+package bool
 
 import "fmt"
 
-func main() {
+func bool() {
 	// var t, f bool = true, false
 	t, f := true, false // short declaration
 	fmt.Println(t, f)

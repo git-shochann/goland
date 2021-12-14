@@ -1,4 +1,4 @@
-package main
+package constant
 
 import "fmt"
 
@@ -10,6 +10,6 @@ const (
 	Password = "test_pass"
 )
 
-func main() {
+func constant() {
 	fmt.Println(Pi, Username, Password)
 }
