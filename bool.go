@@ -2,7 +2,7 @@ package bool
 
 import "fmt"
 
-func bool() {
+func put() {
 	// var t, f bool = true, false
 	t, f := true, false // short declaration
 	fmt.Println(t, f)

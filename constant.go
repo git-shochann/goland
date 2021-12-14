@@ -10,6 +10,6 @@ const (
 	Password = "test_pass"
 )
 
-func constant() {
+func put() {
 	fmt.Println(Pi, Username, Password)
 }
