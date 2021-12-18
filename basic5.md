@@ -136,3 +136,38 @@ func main() {
     }
 }
 ```
+
+- メソッドの引数が？になってたので書いておく。
+
+  ```go
+  // ここの iはここで決めた変数でinterface型(構造体を参照している)という意味
+
+  func do(i interface{}) {
+      switch variable := i.(type) {
+      case int:
+          fmt.Println(variable)
+      case string:
+          fmt.Println(variable)
+      default:
+          fmt.Println("Default")
+      }
+  }
+
+  func main() {
+      do(23) //=> 23
+      do("hello") //=> hello
+      do(true) //=> Default
+  }
+  ```
+
+switch 文の変数を出力するのが意味わからないので、後ほど調べる → 質問中
+
+これわかりやすい。
+
+[Go 言語 - 空インターフェースと型アサーション - 覚えたら書く](https://blog.y-yuki.net/entry/2017/05/08/000000)
+
+---
+
+Qiita インターフェース 実装例から続きスタート
+
+これが終わったら並列処理で酒井さんの出来る！
