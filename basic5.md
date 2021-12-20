@@ -137,30 +137,32 @@ func main() {
 }
 ```
 
-- メソッドの引数が？になってたので書いておく。
+**補足**
 
-  ```go
-  // ここの iはここで決めた変数でinterface型(構造体を参照している)という意味
+switch 文初めに 変数に代入している意味分からない → とりあえず理解した！
 
-  func do(i interface{}) {
-      switch variable := i.(type) {
-      case int:
-          fmt.Println(variable)
-      case string:
-          fmt.Println(variable)
-      default:
-          fmt.Println("Default")
-      }
+ここの変数  `v`  はそれぞれ `型int`  または `型string`  であり、 `**i`  によって保持される値を保持する\*\*
+
+```go
+
+// main関数内で引数をもった状態で呼び出し -> 下記のiが対応引数となる(iはinterface型)
+
+func do(i interface{}) {
+	switch v := i.(type) {
+	  case int:
+		  fmt.Printf("値は%d, 型は%T", v, v)
+		case string:
+			fmt.Printf("値は%d, 型は%T", v, v)
+		default:
+			fmt.Println("デフォルトが呼び出されました")
   }
+}
 
-  func main() {
-      do(23) //=> 23
-      do("hello") //=> hello
-      do(true) //=> Default
-  }
-  ```
-
-switch 文の変数を出力するのが意味わからないので、後ほど調べる → 質問中
+func main() {
+	do(24)
+	do("Hello World")
+}
+```
 
 これわかりやすい。
 
@@ -168,6 +170,6 @@ switch 文の変数を出力するのが意味わからないので、後ほど�
 
 ---
 
-Qiita インターフェース 実装例から続きスタート
+**とりあえず書く関数, メソッド, 構造体, インターフェース等の流れは実践の部分でやってみる！**
 
-これが終わったら並列処理で酒井さんの出来る！
+---
