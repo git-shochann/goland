@@ -159,9 +159,9 @@ map["lastname"]  = "CEO"
 func main() {
 	mapExample := make(map[string]int, 2)
 	fmt.Println(mapExample) // map[]
-	map["age"] = 24
-  map["favoriteNumber"] = 7
-	fmt.Println(mapExaple) // map["age": 24, "favoriteNumber" : 7]
+	mapExample["age"] = 24
+    mapExample["favoriteNumber"] = 7
+	fmt.Println(mapExample) // map["age": 24, "favoriteNumber" : 7]
 }
 ```
 
