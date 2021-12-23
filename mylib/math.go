@@ -1,8 +1,8 @@
-package lib
+package mylib
 
 type Person struct {
-	name string
-	age int
+	Name string
+	Age int
 }
 
 func Average(s []int) int {

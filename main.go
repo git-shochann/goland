@@ -6,13 +6,14 @@ package main
 
 import (
 	"fmt"
-	"goland/lib"
+	"goland/mylib"
 )
 
 func main() {
+	fmt.Println("hi")
 	s := []int{1, 2, 3, 4, 5}
-	fmt.Println(lib.Average(s))
+	fmt.Println(mylib.Average(s))
 
-	person := lib.Person{name: "Sho", age: 24}
+	person := mylib.Person{Name: "Sho", Age: 24}
 	fmt.Println(person)
 }
