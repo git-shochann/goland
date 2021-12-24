@@ -17,7 +17,7 @@ type Person struct {
 	Age  int
 }
 
-func main() {
+func Db() {
 	// create table
 	DbConnection, _ := sql.Open("sqlite3", "./example.sql")
 	defer DbConnection.Close()
