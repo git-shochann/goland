@@ -1,4 +1,4 @@
-package database
+package archive
 
 // コードの中では使わないけど, ビルドして一緒にコンパイルしないと使えないのでこうしておく
 import (
