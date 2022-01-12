@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // func main() {
 // 	x := mylib.Input("Type a number!")
 // 	fmt.Print(x + "月は")
@@ -104,11 +102,30 @@ import "fmt"
 // 	fmt.Println(m1)
 // }
 
-func main() {
-	n := 123 // 変数
-	p := &n  // その値のアドレスを取得
-	fmt.Println("number", n)
-	fmt.Println("pointer", &n)
-	fmt.Println("value", *p)
-	
-}
+// func main() {
+
+// 	a := 10
+// 	b := 20
+// 	a, b = mylib.CallByValue(a, b) // 実引数
+// 	fmt.Println(a)
+// 	fmt.Println(b)
+
+// 	c := 1000
+// 	fmt.Println(&c)
+// 	mylib.CallByReference(&c) // 変数cのアドレスを渡す
+// 	fmt.Println(c)
+// }
+
+// type Vertex struct {
+// 	X, Y int
+// }
+
+// func(v *Vertex) Scale(i int) {
+// 	v.X = v.X * i // 5000 * 1000
+// 	v.Y = v.Y * i // 10000 * 1000
+// }
+
+// func main(){
+// 	v := Vertex{5000,10000}
+// 	v.Scale(1000)
+// }
