@@ -13,7 +13,7 @@ func (md Mydata) PrintData() {
 	fmt.Println("Data", md.Data)	
 }
 
-func main() {
+func init() {
 	// 構造体の初期化
 	taro := Mydata{
 		"Hanako", []int{10,20,30,40,50},
