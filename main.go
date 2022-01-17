@@ -30,13 +30,12 @@ func loadPage(title string) (*Page, error){
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
-	title := r.URL.Path[len("/view/"):] // // view/test 変数.構造体.フィールド名で取得
+	title := r.URL.Path[len("/view/"):] // view/test -> 変数.構造体.フィールド名で取得
 	p, _ := loadPage(title)
 	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
 }
 
 func main() {
 	http.HandleFunc("/view/", viewHandler)
-	// Webサーバーの立ち上げ -> エラー起きたらそのままエラー出力
-	log.Fatalln(http.ListenAndServe(":8080", nil))
+	log.Fatalln(http.ListenAndServe(":8080", nil)) 	// Webサーバーの立ち上げ -> エラー起きたらそのままエラー出力
 }
