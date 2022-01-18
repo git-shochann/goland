@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -29,13 +29,29 @@ func loadPage(title string) (*Page, error){
 	return &Page{Title: title, Body: body}, nil
 }
 
+func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
+	t, _ := template.ParseFiles(tmpl + ".html") // 外部ファイルを取り込む
+	t.Execute(w, p) // そのテンプレートに対して*Page情報を渡して実行
+}
+
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/view/"):] // view/test -> 変数.構造体.フィールド名で取得
 	p, _ := loadPage(title)
-	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
+	// fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
+	renderTemplate(w, "view", p)
+}
+
+func editHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/edit/"):]
+	p, err := loadPage(title)
+	if err != nil {
+		p = &Page{Title: title} // エラーの場合だったとしても, 新しいページを作ってrenderTemplateを呼び出す
+	}
+	renderTemplate(w, "edit", p)
 }
 
 func main() {
 	http.HandleFunc("/view/", viewHandler)
+	http.HandleFunc("/edit/", editHandler)
 	log.Fatalln(http.ListenAndServe(":8080", nil)) 	// Webサーバーの立ち上げ -> エラー起きたらそのままエラー出力
 }
