@@ -7,20 +7,20 @@ import (
 	"io/ioutil"
 )
 
-type Page struct {
+type Paper struct {
 	Title string
 	Body  []byte
 }
 
 // 構造体にメソッドを追加する
 // DBに保存するように, txtファイルに保存するメソッド
-func (p *Page) save() error {
+func (p *Page) savingPage() error {
 	filename := p.Title + ".txt"
 	return ioutil.WriteFile(filename, p.Body, 0600)
 }
 
 // DBから探すようにタイトルを条件に, txtファイルの中身を読み取る
-func loadPage(title string) (*Page, error){
+func loadingPage(title string) (*Page, error){
 	filename := title + ".txt"
 	body, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -29,12 +29,12 @@ func loadPage(title string) (*Page, error){
 	return &Page{Title: title, Body: body}, nil
 }
 
-func main() {
+func init() {
 	// 構造体の初期化
 	// ようやくここで値をセットしてメソッドを呼び出す
 	p1 := &Page{Title: "web_application", Body: []byte("Sample")}
-	p1.save()
+	p1.savingPage()
 
-	p2, _ := loadPage(p1.Title)
+	p2, _ := loadingPage(p1.Title)
 	fmt.Println(string(p2.Body))
 }
