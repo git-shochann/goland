@@ -1,1 +1,3 @@
 2022/01/17 14:31:42 main.go:68: error! open aaa.txt: no such file or directory
+2022/02/01 17:49:56 logging.go:20: error! open aaa.txt: no such file or directory
+2022/02/01 17:50:25 logging.go:20: error! open aaa.txt: no such file or directory

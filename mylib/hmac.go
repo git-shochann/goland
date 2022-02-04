@@ -22,7 +22,7 @@ func Server(apiKey, sign string, data []byte) {
 }
 
 // クライアント側 -> リクエストを投げる
-func init() {
+func Client() {
 	const apiKey = "User1Key"
 	const apiSecret = "User1Secret"
 
