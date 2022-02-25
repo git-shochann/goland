@@ -21,11 +21,11 @@ func(d dog4) describe() string {
 func (d dog4) bigger(d2 dog4) string {
 	dscr := d.describe() // {"マル", "マルチーズ", 22}
 	fmt.Println("---")
-	fmt.Println(dscr) // 
+	fmt.Println(dscr) // "私はマルチーズ、名はマル"
 	fmt.Println("---")
-	dscr += "、私は" + d2.name
+	dscr += "、私は" + d2.name // {"シバ", "柴犬", 40}
 
-	diff := d.height - d2.height
+	diff := d.height - d2.height // 22 - 40
 	switch {
 	case diff > 5:
 		dscr += "より大きい"
