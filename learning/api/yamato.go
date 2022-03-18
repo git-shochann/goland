@@ -52,10 +52,11 @@ func main() {
 		log.Fatalln(err)
 	}
 	// result := doc.Find(".data.arrow.sp-only").Each(func(i int, s *goquery.Selection){ // 関数の引数に関数？ ここではどういうふうな流れで使ってる？
-	// 	fmt.Println(s.Text()) // selection構造体のText()メソッド？ // ▶ が返ってくる
+	// 	fmt.Println(s.Text()) // selection構造体のText()メソッド？ // ▶ が返ってくる -> 
 	// })
-
-	
+    
+	elem := doc.Find(".js-tracking-detail")
+	fmt.Println(elem.Text())
 
 }
 
