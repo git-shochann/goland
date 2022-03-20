@@ -23,19 +23,9 @@ func main() {
 
 	for {
 
-		// file, err := os.Open("list.txt")
-		// if err != nil {
-		// 	os.Exit(1)
-		// }
-		// defer file.Close()
-		// data := bufio.NewScanner(file)
-		// for data.Scan() {
-		// 	fmt.Println(data.Text())
-		// }
-
 		query := url.Values{} // 自分でフィールドを設定 type Values map[string][]string == データ型は、キーがstring, バリューがstringのスライス
 		query.Add("number00", "1")
-		query.Add("number01", "4556-7720-1975")
+		query.Add("number01", "455677208976")
 		fmt.Println(&query)                                 // アドレスと普通の変数どっち？
 		body := strings.NewReader(query.Encode())           // io.Readerを満たすインターフェースの用意？
 		req, err := http.NewRequest("POST", endpoint, body) // リクエスト作成するだけ
@@ -68,26 +58,35 @@ func main() {
 			log.Fatalln(err)
 		}
 
-		elem := doc.Find(".js-tracking-detail").Text()
+		new := doc.Find(".js-tracking-detail").Text()
 
-		if err != ioutil.WriteFile("test.txt", []byte(elem), 0666) {
-			os.Exit(1)
-		}
+		fmt.Println(new)
 
-		old, err := ioutil.ReadFile("test.txt")
+		file, err := os.Open("text.txt")
 
+		var old string
 		if err != nil {
-			log.Fatalln(err)
+			old += ""
+		} else {
+			data, err := ioutil.ReadAll(file)
+			if err != nil {
+				os.Exit(1)
+			}
+			old += string(data)
 		}
 
-		if string(old) != elem {
+		defer file.Close()
+
+		if new == old {
+			fmt.Println("変化がありません。")
+		} else {
+			if err := ioutil.WriteFile("text.txt", []byte(new), 0700); err != nil {fmt.Println("error!")}
 			fmt.Println("変更がありました。")
-			fmt.Printf("伝票番号 %v %v \n", query["number01"], elem)
+			fmt.Printf("伝票番号 %v %v \n", query["number01"], new)
 			break
-			// SendToLine() // LINEに通知を送る
 		}
 
-		fmt.Println("繰り返します")
+		fmt.Println("5秒後に繰り返します")
 		time.Sleep(5 * time.Second)
 		// elem.Each(func(i int, s *goquery.Selection) { // 関数の引数に関数？ ここではどういうふうな流れで使ってる？
 		// 	fmt.Printf("伝票番号 %v %v\n", query["number01"], s.Text())
