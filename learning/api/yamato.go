@@ -80,7 +80,9 @@ func main() {
 		if new == old {
 			fmt.Println("変化がありません。")
 		} else {
-			if err := ioutil.WriteFile("text.txt", []byte(new), 0700); err != nil {fmt.Println("error!")}
+			if err := ioutil.WriteFile("text.txt", []byte(new), 0700); err != nil {
+				fmt.Println("error!")
+			}
 			fmt.Println("変更がありました。")
 			fmt.Printf("伝票番号 %v %v \n", query["number01"], new)
 			break
